@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public static int collectedAmount;
 
+
     public GameObject bulletPrefab;
     private float lastFire;
     [SerializeField] float fireDelay;

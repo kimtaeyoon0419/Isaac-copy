@@ -5,6 +5,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] float lifeTime;
+    [SerializeField] float bulletAtkDmg;
+    [SerializeField] GameObject player;
 
     void Start()
     {
@@ -20,5 +22,14 @@ public class BulletController : MonoBehaviour
     {
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyController>().Death();
+            Destroy(gameObject);
+        }
     }
 }
